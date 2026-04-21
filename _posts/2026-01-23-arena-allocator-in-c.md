@@ -1,6 +1,6 @@
 ---
 layout: post
-Title: arena allocator in C
+title: arena allocator in C
 date: 2026-01-23 02:59 +0400
 tags: [c, dynamic memory]
 math: true
