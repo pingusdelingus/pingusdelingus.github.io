@@ -63,7 +63,7 @@ pieces of (spaghetti) code and began profiling.
 
 coincidentally, a few days after this, i came across a video by magicalbat which directly addressed this sort of issue
 
-{% include embed/youtube.html id='{jgiMagdjA1s}' %}
+{% include embed/youtube.html id='jgiMagdjA1s' muted=1 compact=1 %}
 
 
 i then fell down the rabbit hole of arena allocators and have been trying to implement one for the past week now. 
