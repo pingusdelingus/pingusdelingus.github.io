@@ -3,7 +3,7 @@ title: "Arena allocator in C"
 date: 2026-01-23 02:59 +0400
 tags: [c, dynamic memory]
 math: true
-author: 007
+author: esteban
 pin: true
 description: "why & how to implement an Arena Allocator (in C!)"
 mermaid: true
