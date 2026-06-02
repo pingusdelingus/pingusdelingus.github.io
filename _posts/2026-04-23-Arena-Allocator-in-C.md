@@ -1,6 +1,6 @@
 ---
 title: "Arena allocator in C"
-date: 2026-01-23 02:59 +0400
+date: 2026-04-23 02:59 +0400
 tags: [c, dynamic memory]
 math: true
 author: esteban
