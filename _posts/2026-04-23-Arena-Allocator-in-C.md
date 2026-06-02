@@ -252,8 +252,10 @@ i made the naive assumption that rellaoc works in place, when it in fact does no
 that is, realloc maintains no guarantee that realloc'd memory will stay in the same location.
 it is in fact, quite common to have realloc allocate a larger buffer elsewhere, and copy all previous data to the new location.
 
+this introduces the issue of having old pointers from a previous allocation/push, then having the buffer run out of size and realloc, which may or may not occur in place.
+if it does not occur in place, the old pointers that were alloc'ed are no longer valid and will cause UB (seg fault) on a dereference.
 
-at this point, i went to a whiteboard and began plotting out other architectures to address this issue.
+at this point, i went to the nearest whiteboard and began plotting out other architectures to address this issue.
 
 i found that a simple workaround would be to implement arenas as a doubly linked list.
 this does add some additional complexity, but i think the functionality is worth it.
@@ -299,4 +301,9 @@ i64 GetArenaSize(Arena* a);
 ```
 
 
+of course, we now have to keep track of our arena blocks and our arena handler. but this allows us to have more granular and dynamic control at run time. 
+
+for example, if our arena blocks are of size 1024 bytes, and our user is repeatedly requesting 700-800 bytes, we can dynamically change the default size of each block at runtime, preventing fragmentation of our blocks and reducing unused space. 
+
+the benefit with this implementation is that if the current block has a 1kb capacity, and has used up 600 bytes, a request for another 600 bytes will result in the current block being marked as full, creating a new block with a size of 4 * prevSize and continuing. of course, the 400 excess bytes are lost until the end of the program's life.
 
