@@ -1,0 +1,38 @@
+<!-- <div class="embed-container">
+    <iframe
+        src="https://www.youtube.com/embed/{{ include.id }}"
+        width="700"
+        height="480"
+        frameborder="0"
+        allowfullscreen="false">
+    </iframe>
+  </div> -->
+
+<style>
+  .crop-container {
+    width: 700px;
+    height: 480px;
+    overflow: hidden; /* This hides everything outside the 700x480 box */
+    position: relative;
+    background: #000;
+  }
+
+  .crop-container iframe {
+    position: absolute;
+    /* Scales the iframe larger than the box to push controls off-screen */
+    width: 820px;
+    height: 600px;
+    /* Moves the iframe up and left to crop out the top and bottom bars */
+    top: -60px;
+    left: -60px;
+    pointer-events: none; /* Optional: Disables clicking/hovering menus */
+  }
+</style>
+
+<div class="crop-container">
+  <iframe
+    src="https://www.youtube.com/embed/{{ include.id }}?controls=0&showinfo=0&rel=0&modestbranding=1"
+    frameborder="0"
+    allowfullscreen="false">
+  </iframe>
+</div>
